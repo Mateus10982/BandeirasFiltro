@@ -13,9 +13,13 @@ var telaFavorite=document.getElementById("lista2");
 var envio=document.getElementById("enviar");
 var procura=document.getElementById("procura"); 
 envio.addEventListener("click", function(){
-    let procura=document.getElementById("procura").value;
-    let paisProcura= repositoriosPaisesPrincipal.findIndex(x=> x.Nome == procura); console.log(paisProcura)
-    window.location.href=`#${paisProcura}`;
+    let procura=document.getElementById("procura").value.toLowerCase();
+    let paisProcura= repositoriosPaisesPrincipal.findIndex(x=> x.Nome == procura); 
+    if(paisProcura >= 0){
+    window.location.href=`#${paisProcura}`;}else{
+        let paisProcura= repositoriosPaisesPrincipal.findIndex(x=> x.TraducaoNome.toLowerCase() == procura);
+        window.location.href=`#${paisProcura}`;
+    }
 });
 var PopulacaoMudial=document.getElementById("PopulacaoMudial");
 var TotaldePaises=document.getElementById("TotaldePaises"); var TotaldePaisesTT=0; var PopulacaoMudialTT=0;
